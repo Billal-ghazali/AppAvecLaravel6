@@ -42,10 +42,7 @@ class ProfileController extends Controller
         } else {
             auth()->user()->profile->update($data);
         }
-
-
-        auth()->user()->profile->update($data);
-
+        
         return redirect()->route('profiles.show', ['user'=> $user]);
     }
     //////////////////////////
