@@ -9,12 +9,12 @@
         <div class="col-8">
             <div class="d-flex align-items-baseline">
                 <div class='h4 mr-3 pt-2'>{{$user->username}}</div>
-                <follow-button></follow-button>
+            <follow-button profile-id="{{ $user->profile->id}}" follows="{{ $follows }}"></follow-button>
             </div>
             <div class="d-flex mt-3">
-                <div class='mr-3'> <strong>{{ $user ->posts->count() }}</strong>  publication(s)</div>
-                <div class='mr-3'> <strong> 2 072</strong> abonnés</div>
-                <div class='mr-3'> <strong>1</strong>  abonnements</div>
+                <div class='mr-3'> <strong>{{$postsCount }}</strong>  publication(s)</div>
+                <div class='mr-3'> <strong> {{ $followersCount }}</strong> abonnés</div>
+                <div class='mr-3'> <strong>{{ $followingCount }}</strong>  abonnements</div>
             </div>
             @can('update', $user->profile)
                 <a href="{{ route('profiles.edit', ['user' => $user->username])}}" class="btn btn-outline-secondary mt-2">
@@ -31,7 +31,7 @@
     <div class="row mt-5">
     @foreach ($user->posts as $post)
     
-        <div class="col-4">
+        <div class="col-4 pb-3">
             <a href="{{route('posts.show', ['post' =>$post->id])}}"><img src="{{ asset('storage') .'/' . $post->image}}" class='w-100'></a>
         </div>
 

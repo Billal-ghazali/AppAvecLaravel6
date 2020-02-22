@@ -11,6 +11,10 @@ class profile extends Model
     {
         return $this->belongsto('App\User');
     }
+    public function followers()
+    {
+        return $this->belongsToMany('App\User');
+    }
     public function getImage()
     {
         $imagePath = $this->image ;
